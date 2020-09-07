@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
                 steps {
-                    sh 'docker build -f dockerfile . -t mayarnour/dajangoapp:v1.0'
+                    sh 'docker build -f Dockerfile . -t mayarnour/dajangoapp:v1.0'
                       }
                    post{
                     success{

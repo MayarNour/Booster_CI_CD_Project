@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
                 steps {
-                    sh 'docker build -f Dockerfile . -t mayarnour/dajangoapp:v1.0'
+                    sh 'docker build -f Dockerfile . -t mayarnour/dajangoappDev:v1.0'
                       }
                    post{
                     success{
@@ -16,13 +16,13 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId:"docker",usernameVariable:"USERNAME",passwordVariable:"PASSWORD")]){
                 sh 'docker login --username $USERNAME --password $PASSWORD'
-                sh 'docker push mayarnour/dajangoapp:v1.0'
+                sh 'docker push mayarnour/dajangoappDev:v1.0'
                 }
             }
         }
          stage('Deploy') {
             steps {
-                sh 'docker run -d -p 3000:3000 mayarnour/dajangoapp:v1.0'
+                sh 'docker run -d -p 4000:3000 mayarnour/dajangoappDev:v1.0'
             }  
     }
   }

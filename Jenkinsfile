@@ -14,7 +14,7 @@ pipeline {
             }
         stage('Push') {
             steps {
-                withCredentials([usernamePassword(credentialsId:"docker",usernameVariable:"USERNAME",passwordVariable:"PASSWORD")]){
+                withCredentials([usernamePassword(credentialsId:"dockerhub",usernameVariable:"USERNAME",passwordVariable:"PASSWORD")]){
                 sh 'docker login --username $USERNAME --password $PASSWORD'
                 sh 'docker push mayarnour/dajangoappDev:v1.0'
                 }
